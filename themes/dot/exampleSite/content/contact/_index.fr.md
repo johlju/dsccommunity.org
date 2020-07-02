@@ -1,4 +1,6 @@
 ---
-title: "Contact"
-date: 2018-12-27T09:10:27+06:00
+title: "Vous avez des questions"
+draft: false
 ---
+
+Envoyez le formulaire et confirmez votre adresse e-mail à l'adresse[Formspree](https://formspree.io/).
