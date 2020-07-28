@@ -1,5 +1,5 @@
 ---
-title: "DSC Module Automatic Documentation"
+title: "DSC Module Automated Documentation"
 date: 2020-07-26T00:00:00+02:00
 draft: false
 author: johlju
@@ -53,7 +53,7 @@ updated which could only be done by a maintainer.
 
 This early iteration went under the the name "auto-documentation".
 
-## The new automated documentation
+## The new automated user documentation
 
 When the DSC Community moved to a new CI/CD pipeline there was a need for
 the maintainer, contributor, and user experience to be even better for those
@@ -61,16 +61,52 @@ DSC modules that still had not opt-in to auto-documentation. The DSC modules
 that had opted-in to auto-documentation needed to be... well
 automated.
 
-So the first goal was to make the automated documentation fully automated
-in the CI/CD pipeline. We have not gotten there with the module
-DscResource.DocGenerator, and we still call it auto-documentation (or auto-doc).
+The first goal was to make the user documentation fully automated
+in the CI/CD pipeline. We have now gotten there with the module
+[DscResource.DocGenerator](https://github.com/dsccommunity/DscResource.DocGenerator), 
+and we still call it auto-documentation (or auto-doc).
 
 ### Maintainer experience
 
-Since the auto-doc is now fully automated a maintainer no longer have to
-intervene. When a pull request is merged and a release is published, the
-documentation is also published to the
+Since the user documentation is now fully automated a maintainer no longer
+have to intervene. When a pull request is merged and a preview release or
+a full release is published the documentation is now automatically built
+and published to the GitHub repository wiki.
 
----
-as seen in this example for the resource
-[SPInstall](https://github.com/dsccommunity/SharePointDsc/wiki/SPInstall/63397afade10bd9794e5cb5378c20bcc8c0cefd2).
+### Contributor experience
+
+A contributor should still update the documentation through a pull request. There
+are three aspects of the user documentation:
+
+Type of documentation | Location in repository
+--- | ---
+Resource specific information like general information about the resource, requirements, known issues, etcetera. | `/source/DSCResources/ResourceName/README.md`
+Resource parameter names, types, embedded CIM instances, and descriptions. | `/source/DSCResources/ResourceName/ResourceName.schema.mof`
+Resource examples files. | `/source/Examples/Resources/ResourceName/*.ps1`
+
+>A contributor still need to update comment-based help in the resource code
+>as appropriate, but the comment-based help is not used for user documentation.
+>The comment-based help is used for design documentation for other contributors.
+>Comment-based help should be used to describe how parameters are used in
+>the code and design choices for the various functions.
+
+### User experience
+
+The user now only have to browse to one location, the GitHub repository Wiki,
+to have all the user documentation in one location.
+
+For each resource there is a wiki page that contain the resource specific
+information, parameters and their type and description, and all the resource 
+examples. An example of a wiki page can be seen here for the [resource SqlProtocol](https://github.com/dsccommunity/SqlServerDsc/wiki/SqlProtocol).
+
+The user can also use `Get-Help` to get the same information, e.g.
+`Get-Help SqlProtocol`.
+
+## Implement automated user documentation
+
+The 
+
+## Future
+
+- Gather all wikis in one location to get a better overview over all 
+  DSC modules user documentation.
